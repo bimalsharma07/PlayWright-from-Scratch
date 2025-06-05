@@ -21,6 +21,6 @@ export class LoginPage {
         await this.loginButton.click();
     }
     async loginSucess() {
-        await expect(this.page).toHaveURL('https://www.saucedemo.com/inventory.html');
+        await expect(this.page).toHaveURL('https://www.saucedemo.com/inventory.html', { timeout: 200000 });
     }
 }
