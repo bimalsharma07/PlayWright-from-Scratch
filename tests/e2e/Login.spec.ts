@@ -8,6 +8,6 @@ test ('Sauce Demo Login', async ({ page }) => {
     const loginPage = new LoginPage(page);
 
     await loginPage.goto();
-    await loginPage.login(process.env.username!, process.env.password!);
+    await loginPage.login(process.env.USERNAME!, process.env.PASSWORD!);
     await loginPage.loginSucess();
 })
