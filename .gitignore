@@ -9,6 +9,9 @@ node_modules
 /allure-report
 /allure-results
 /playwright.yml
+/github
+/utils
+/gitinore
 
 # Enviroment variable 
 .env
