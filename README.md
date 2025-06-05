@@ -1,1 +1,1 @@
-# PlayWright
+This repository provides a foundational Playwright framework, engineered from scratch for scalability, maintainability, and robustness. It incorporates the latest and most secure practices to ensure a reliable and efficient test automation solution.
