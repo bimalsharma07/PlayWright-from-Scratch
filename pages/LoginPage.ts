@@ -13,7 +13,11 @@ export class LoginPage {
         this.loginButton = page.locator('#login-button');
     }
     async goto() {
-        await this.page.goto('/');
+        const baseURL = process.env.BASE_URL;
+        if (!baseURL) {
+            throw new Error('BASE_URL environment variable is not defined');
+        }
+        await this.page.goto(baseURL);
     }
     async login(USERNAME: string, PASSWORD: string) {
         await this.usernameInput.fill(USERNAME);
