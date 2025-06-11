@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/LoginPage';
 import { InventoryPage } from '../../pages/InventoryPage';
 import { CartPage } from '../../pages/CartPage';
-import { CheckoutPage } from '../../pages/checkoutPage';
+import { CheckoutPage } from '../../pages/CheckoutPage';
 import { OverviewPage } from '../../pages/OverviewPage';
 import { OrderPage } from '../../pages/OrderPage';
 import { config } from 'dotenv';
