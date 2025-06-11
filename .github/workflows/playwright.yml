@@ -18,10 +18,9 @@ jobs:
     - name: Run Playwright tests
       env:
         BASE_URL: "https://www.saucedemo.com/"
-      run: npx playwright test --timeout=300000
-      env:
         USERNAME: ${{ secrets.USERNAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
+      run: npx playwright test --timeout=300000
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
