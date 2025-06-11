@@ -13,7 +13,7 @@ export class LoginPage {
         this.loginButton = page.locator('#login-button');
     }
     async goto() {
-        await this.page.goto('https://www.saucedemo.com/');
+        await this.page.goto('/');
     }
     async login(USERNAME: string, PASSWORD: string) {
         await this.usernameInput.fill(USERNAME);
@@ -21,6 +21,6 @@ export class LoginPage {
         await this.loginButton.click();
     }
     async loginSucess() {
-        await expect(this.page).toHaveURL('https://www.saucedemo.com/inventory.html', { timeout: 200000 });
+        await expect(this.page).toHaveURL('/inventory.html', { timeout: 200000 });
     }
 }

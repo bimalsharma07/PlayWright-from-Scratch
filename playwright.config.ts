@@ -1,31 +1,29 @@
 import { defineConfig, devices } from '@playwright/test'
 require('dotenv').config();
+
+
 export default defineConfig({
   testDir: './tests/e2e',
-  fullyParallel: true,
-
-  forbidOnly: !!process.env.CI,
-  
-  retries: process.env.CI ? 2 : 0,
- 
-  workers: process.env.CI ? 1 : undefined,
+  fullyParallel: false, // Run tests sequentially for better stability
   
   reporter: [['html'], ['allure-playwright']],
     
   use: {
+    baseURL: process.env.BASE_URL,
     headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    trace: 'on-first-retry',
-    baseURL: 'https://www.saucedemo.com/',
+    trace: 'retain-on-failure',
   },
 
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1440, height: 819 },
+      },
     },
-
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
