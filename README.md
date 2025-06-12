@@ -32,11 +32,3 @@ To run tests, run the following command
 
 ```bash
 npx playwright test
-
-## Author
-
-- Bimal Sharma
-## Appendix
-https://playwright.dev/docs/intro
-
-
