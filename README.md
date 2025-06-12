@@ -1,8 +1,7 @@
 
-# Project Title
 
-This repository provides a foundational Playwright framework, engineered from scratch for scalability, maintainability, and robustness. It incorporates the latest and most secure practices to ensure a reliable and efficient test automation solution.
-
+End-to-End Test Automation for SauceDemo
+This repository showcases a comprehensive end-to-end testing framework for SauceDemo, meticulously engineered for scalability, maintainability, and robustness. Built from the ground up, it integrates the latest automation techniques and secure best practices, ensuring a reliable, efficient, and future-proof test automation solution. The objective is to implement industry-leading practices while continuously exploring and enhancing automation capabilities.
 ## Tech Stack
 
 **Client:** Typescript, Playwright
