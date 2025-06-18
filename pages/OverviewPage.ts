@@ -11,12 +11,12 @@ export class OverviewPage {
 
     constructor(page: Page) {
         this.page= page;
-        this.overviewTitle = page.locator('[data-test="title"]');
+        this.overviewTitle = page.getByText('Checkout: Overview');
         this.paymentInformation = page.locator('[data-test="payment-info-label"]');
         this.shippingInformation = page.locator('[data-test="shipping-info-label"]');
         this.priceTotal = page.locator('[data-test="total-info-label"]');
-        this.finishButton = page.locator('[data-test="finish"]');
-        this.cancelButton = page.locator('#cancel');
+        this.finishButton = page.getByRole('button', {name : 'finish'});
+        this.cancelButton = page.getByRole('button', {name : 'cancel'});
     }
 
     async checkOverviewTitle() {

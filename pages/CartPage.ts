@@ -9,10 +9,10 @@ export class CartPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.cartTitle = page.locator('[data-test="title"]');
-        this.removeButton = page.locator('[data-test="remove-sauce-labs-backpack"]');
-        this.continueShoppingButton = page.locator('[data-test="continue-shopping"]');
-        this.checkoutButton = page.locator('[data-test="checkout"]');
+        this.cartTitle = page.getByText('Your Cart');
+        this.removeButton = page.locator('#remove-sauce-labs-bike-light');
+        this.continueShoppingButton = page.locator('#continue-shopping');
+        this.checkoutButton = page.getByRole('button', {name: 'Checkout'})
 
     }
     async checkCartTitle() {
