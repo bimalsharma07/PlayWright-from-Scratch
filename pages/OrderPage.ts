@@ -8,9 +8,9 @@ export class OrderPage {
 
      constructor(page: Page) {
           this.page = page;
-          this.pageTitle = page.locator('[data-test="title"]');
-          this.confirmationMessage = page.locator('[data-test="complete-header"]');
-          this.backToHomeButton = page.locator('#back-to-products');
+          this.pageTitle = page.getByText('Checkout: Complete!');
+          this.confirmationMessage = page.getByText('Thank you for your order!');
+          this.backToHomeButton = page.getByRole('button', {name : 'Back Home'});
 
      }
 

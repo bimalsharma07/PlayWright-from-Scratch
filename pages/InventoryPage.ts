@@ -13,7 +13,7 @@ export class InventoryPage {
         this.sortContainer = page.locator('.product_sort_container');
         this.firstProduct = page.locator('button[data-test="add-to-cart-sauce-labs-backpack"]');
         this.secondProduct = page.locator('button[data-test="add-to-cart-sauce-labs-bike-light"]');
-        this.cartLink = page.locator('a.shopping_cart_link');
+        this.cartLink = page.locator('.shopping_cart_badge');
     }
 
     async checkSortContainer() {
