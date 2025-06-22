@@ -1,33 +1,66 @@
+# 🚀 Playwright From Scratch 2025
 
+A robust, scalable Playwright-based automation framework crafted for modern web applications. Features include seamless CI/CD integration, dynamic test data handling, and detailed Allure reporting.
 
-End-to-End Test Automation for SauceDemo
-This repository showcases a comprehensive end-to-end testing framework for SauceDemo, meticulously engineered for scalability, maintainability, and robustness. Built from the ground up, it integrates the latest automation techniques and secure best practices, ensuring a reliable, efficient, and future-proof test automation solution. The objective is to implement industry-leading practices while continuously exploring and enhancing automation capabilities.
-## Tech Stack
+## 🧰 Tech Stack
 
-**Client:** Typescript, Playwright
+- **Automation:** Playwright, TypeScript  
+- **CI/CD:** GitHub Actions  
+- **Reporting:** Allure    
+- **Containerization:** Docker
 
-**Server:** Node
+## ⚙️ Project Highlights
 
+- 🔄 End-to-End test coverage: Login, Search, Cart, and Checkout flows    
+- 📊 Allure reports for actionable insights    
+- 🐳 Docker-friendly setup for consistent environments  
+- 🔐 Secure GitHub Actions workflows with encrypted secrets  
 
-## Features
+## 🏗️ Framework Structure
 
-- End to End Testing
-- GitHub Actions Integration
-- Allure report
-- Page Object Model
-
-
-## Installation
-
-Install project with npm
-
-```bash
-npm init playwright@latest  
 ```
-    
-## Running Tests
 
-To run tests, run the following command
+📦 playwright-automation/
+├── 📂 .github/workflows
+├── 📂 pages/
+│   ├── LoginPage.ts
+│   └── CheckoutPage.ts
+│   └── InventoryPage.ts
+│   └── LoginPage.ts
+│   └── OrderPage.ts
+│   └── OverviewPage.ts
+├── 📂 tests/e2e
+│       ├── E2E.spec.ts
+├── 📄 .gitignore
+├── 📄 Dockerfile
+├── 📄 README.md
+├── 📄 package-lock.json
+├── 📄 package.json
+├── 📄 playwright.config.ts
+├── 📄 tsconfig.json
+```
 
-```bash
-npx playwright test
+
+## 🌐 CI/CD Integration
+
+- Automatically triggered on push and pull requests via **GitHub Actions**
+- Secrets managed securely with GitHub’s encrypted environment variables
+
+## 📸 Allure Reports
+
+Visually rich test reports with screenshots, logs, and step-by-step details. Ideal for debugging and stakeholder visibility.
+
+## 👤 Author
+
+**Bimal** – SDET passionate about clean, scalable automation.  
+[LinkedIn Profile](https://www.linkedin.com/in/sharma-bimal/)
+
+---
+
+> “Test smarter, deploy faster.”
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
