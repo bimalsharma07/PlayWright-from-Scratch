@@ -43,7 +43,7 @@ A robust, scalable Playwright-based automation framework crafted for modern web 
 
 ## 🌐 CI/CD Integration
 
-- Automatically triggered on push and pull requests via **GitHub Actions**
+- Automatically triggered on push via **GitHub Actions**
 - Secrets managed securely with GitHub’s encrypted environment variables
 
 ## 📸 Allure Reports
