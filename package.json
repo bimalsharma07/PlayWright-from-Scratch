@@ -5,19 +5,27 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "build": "tsc"
+    "test:e2e": "playwright test --project=chromium",
+    "build": "tsc",
+    "clean:allure-results": "rimraf allure-results",
+    "clean:allure-report": "rimraf allure-report",
+    "test:allure": "npm run clean:allure-results && npx playwright test --reporter=line,allure-playwright",
+    "generate:allure-report": "allure generate allure-results --clean -o allure-report",
+    "open:allure-report": "allure open allure-report",
+    "report:allure": "npm run test:allure && npm run generate:allure-report && npm run open:allure-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.53.1",
+    "@playwright/test": "^1.54.1",
     "@types/node": "^22.15.29",
-    "allure-playwright": "^3.2.2"
+    "allure-playwright": "^3.3.0",
+    "rimraf": "^5.0.10"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
-    "typescript": "^5.0.0",
-    "ts-node": "^10.9.0"
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
   }
 }
