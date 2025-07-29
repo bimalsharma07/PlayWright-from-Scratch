@@ -19,7 +19,8 @@ test('Sauce Demo E2E - Login to Order Completion', async ({ page }) => {
 
   await test.step('Login to SauceDemo', async () => {
     await loginPage.goto();
-    await loginPage.login(process.env.USERNAME!, process.env.PASSWORD!);
+    await loginPage.invalidLogin(process.env.Invalid_Username!, process.env.Invadlid_Password!);
+    await loginPage.validlogin(process.env.USERNAME!, process.env.PASSWORD!);
     await loginPage.loginSucess();
   });
 
