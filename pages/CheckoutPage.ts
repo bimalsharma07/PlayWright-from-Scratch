@@ -1,4 +1,5 @@
 import {expect, type Locator, type Page} from '@playwright/test';
+import testData from '../test-data/data.json';
 
 export class CheckoutPage {
     readonly page: Page;
@@ -24,9 +25,9 @@ export class CheckoutPage {
     }
 
     async yourInformation() {
-        await this.firstName.fill('John');
-        await this.lastName.fill('Doe');
-        await this.postalCode.fill('L22 5AA');
+        await this.firstName.fill(testData[1].firstName);
+        await this.lastName.fill(testData[1].lastName);
+        await this.postalCode.fill(testData[1].postalCode);
     }
 
     async clickContinueButton() {
