@@ -5,6 +5,7 @@ import { CartPage } from '../../pages/CartPage';
 import { CheckoutPage } from '../../pages/CheckoutPage';
 import { OverviewPage } from '../../pages/OverviewPage';
 import { OrderPage } from '../../pages/OrderPage';
+import  testData from '../../test-data/data.json';
 import { config } from 'dotenv';
 config();
 
@@ -19,7 +20,7 @@ test('Sauce Demo E2E - Login to Order Completion', async ({ page }) => {
 
   await test.step('Login to SauceDemo', async () => {
     await loginPage.goto();
-    await loginPage.invalidLogin(process.env.Invalid_Username!, process.env.Invadlid_Password!);
+    await loginPage.invalidLogin(testData[0].Invalid_username,testData[0].Invalid_password);
     await loginPage.validlogin(process.env.USERNAME!, process.env.PASSWORD!);
     await loginPage.loginSucess();
   });
