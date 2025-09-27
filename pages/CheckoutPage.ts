@@ -25,9 +25,9 @@ export class CheckoutPage {
     }
 
     async yourInformation() {
-        await this.firstName.fill(testData[1].firstName);
-        await this.lastName.fill(testData[1].lastName);
-        await this.postalCode.fill(testData[1].postalCode);
+        await this.firstName.fill(testData[2].firstName);
+        await this.lastName.fill(testData[2].lastName);
+        await this.postalCode.fill(testData[2].postalCode);
     }
 
     async clickContinueButton() {

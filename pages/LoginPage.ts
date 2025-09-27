@@ -17,11 +17,7 @@ export class LoginPage {
 
     }
     async goto() {
-        const baseURL = process.env.BASE_URL;
-        if (!baseURL) {
-            throw new Error('BASE_URL environment variable is not defined');
-        }
-        await this.page.goto(baseURL);
+        await this.page.goto('/');
     }
     async invalidLogin(Invalid_Username: string, Invadlid_Password: string) {
         await this.usernameInput.fill(Invalid_Username);
