@@ -3,7 +3,7 @@ require('dotenv').config();
 
 
 export default defineConfig({
-  testDir: './tests/e2e',
+  testDir: './tests/',
   fullyParallel: false,
   
   reporter: [['html'], ['allure-playwright']],
