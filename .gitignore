@@ -15,5 +15,3 @@ dist
 /utils
 /gitinore
 
-# Enviroment variable 
-.env

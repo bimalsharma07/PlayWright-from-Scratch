@@ -9,7 +9,7 @@ export default defineConfig({
   reporter: [['html'], ['allure-playwright']],
     
   use: {
-    baseURL: process.env.BASE_URL,
+    baseURL: 'https://www.saucedemo.com/',
     headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',

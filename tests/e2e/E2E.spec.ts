@@ -1,27 +1,15 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
-import { InventoryPage } from '../../pages/InventoryPage';
-import { CartPage } from '../../pages/CartPage';
-import { CheckoutPage } from '../../pages/CheckoutPage';
-import { OverviewPage } from '../../pages/OverviewPage';
-import { OrderPage } from '../../pages/OrderPage';
+import { test } from '../../fixtures/base-page';
 import  testData from '../../test-data/data.json';
-import { config } from 'dotenv';
-config();
+// import {config} from 'dotenv';
+// config();
 
 
-test('Sauce Demo E2E - Login to Order Completion', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const inventoryPage = new InventoryPage(page);
-  const cartPage = new CartPage(page);
-  const checkoutPage = new CheckoutPage(page);
-  const overviewPage = new OverviewPage(page);
-  const orderPage = new OrderPage(page);
+test('Sauce Demo E2E - Login to Order Completion', async ({ loginPage, inventoryPage, cartPage, checkoutPage, overviewPage, orderPage }) => {
 
   await test.step('Login to SauceDemo', async () => {
     await loginPage.goto();
-    await loginPage.invalidLogin(testData[0].Invalid_username,testData[0].Invalid_password);
-    await loginPage.validlogin(process.env.USERNAME!, process.env.PASSWORD!);
+    await loginPage.invalidLogin(testData[1].Invalid_username,testData[1].Invalid_password);
+    await loginPage.validlogin(testData[0].Username, testData[0].Password);
     await loginPage.loginSucess();
   });
 
