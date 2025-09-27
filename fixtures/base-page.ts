@@ -1,5 +1,5 @@
-import { OverviewPage } from './../pages/OverviewPage';
 import {test as base} from '@playwright/test'
+import { OverviewPage } from './../pages/OverviewPage';
 import { LoginPage } from '../pages/LoginPage'
 import { InventoryPage } from '../pages/InventoryPage'
 import { CartPage } from '../pages/CartPage';
@@ -15,8 +15,6 @@ type myFixtures = {
      orderPage : OrderPage;
 
 }
-
-
 export const test = base.extend<myFixtures>({
        loginPage : async ({page}, use) => {
           await use(new LoginPage(page))
