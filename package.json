@@ -6,6 +6,7 @@
   "scripts": {
     "test": "playwright test",
     "test:e2e": "playwright test --project=chromium",
+    "test:regression": "playwright test --project=chromium --grep @regression",
     "build": "tsc",
     "clean:allure-results": "rimraf allure-results",
     "clean:allure-report": "rimraf allure-report",
