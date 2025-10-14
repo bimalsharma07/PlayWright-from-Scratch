@@ -1,11 +1,11 @@
 import {test, expect} from '../../fixtures/base-page';
-import  testData from '../../test-data/data.json';
+import  data from '../../test-data/data.json';
 
 test.describe('@smoke E2E Smoke Test', () => {
 test('Complete E2E Flow', async ({ page, loginPage, inventoryPage, cartPage, checkoutPage, overviewPage }) => {
     //Step 1: Login 
         await loginPage.goto();
-        await loginPage.validlogin(testData[0].Username, testData[0].Password);
+        await loginPage.validlogin(data.validuser.username, data.validuser.password);
         await loginPage.loginSucess();
 
 //Step 2: Inventory Page

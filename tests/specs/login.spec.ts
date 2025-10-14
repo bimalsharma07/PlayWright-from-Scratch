@@ -2,7 +2,6 @@ import { expect, test } from '../../fixtures/base-page';
 import { LoginPage } from '../../pages/LoginPage';
 import data from '../../test-data/data.json';
 
-
 test.describe('@regression Login Tests', () => {
     test('Login with valid user', async ({page, loginPage}) => {
         await page.goto('/');
@@ -36,12 +35,12 @@ test.describe('@regression Login Tests', () => {
     });
     test('Login with invalidvalid user', async ({page, loginPage}) => {
         await page.goto('/');
-        await loginPage.invalidLogin(data.invalidLogins.username, data.invalidLogins.password);
+        await loginPage.invalidLogin(data.invalidLogin.username, data.invalidLogin.password);
         await expect(loginPage.errorMessage).toBeVisible();
     });
     test('Login with empty user', async ({page, loginPage}) => {
         await page.goto('/');
-        await loginPage.EmptyUser(data.emptyLogins.username, data.emptyLogins.username);
+        await loginPage.EmptyUser(data.emptyLogin.username, data.emptyLogin.username);
         await expect(loginPage.EmptyMessage).toBeVisible();
     });
 });
