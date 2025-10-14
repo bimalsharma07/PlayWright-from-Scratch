@@ -1,15 +1,48 @@
- [
-  {
-    "Username": "standard_user",
-    "Password": "secret_sauce"
-  },
-  {
-    "Invalid_username": "InvalidUser",
-    "Invalid_password": "InvalidPassword"
-  },
-  {
-    "firstName": "John",
-    "lastName": "Doe",
-    "postalCode": "34543"
+{
+    "validuser":
+      {
+        "username": "standard_user",
+        "password": "secret_sauce"
+      },
+      "lockeduser": 
+      {
+        "username": "locked_out_user",
+        "password": "secret_sauce"
+      },
+      "problemuser":
+      {
+        "username": "problem_user",
+        "password": "secret_sauce"
+      },
+      "performanceglitchuser":
+      {
+        "username": "performance_glitch_user",
+        "password": "secret_sauce"
+      },
+      "erroruser":
+      {
+        "username": "error_user",
+        "password": "secret_sauce"
+      },
+      "visualuser":
+      {
+        "username": "visual_user",
+        "password": "secret_sauce"
+      },
+    "invalidLogins": 
+      {
+        "username": "InvalidUser",
+        "password": "InvalidPassword"
+      },
+    "emptyLogins": 
+      {
+        "username": "",
+        "password": ""
+      },
+    "checkout":
+      {
+        "firstName": "John",
+        "lastName": "Doe",
+        "postalCode": "34543"
+      }
   }
-]
