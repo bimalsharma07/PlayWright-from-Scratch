@@ -1,13 +1,23 @@
-name: Playwright Tests
+name: Playwright Test Pipeline
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
-    branches: [main, master]
+    branches:
+      - main
+      - master
 
 jobs:
-  test:
+  # -----------------------------
+  # SMOKE TESTS (Runs on PR)
+  # -----------------------------
+  smoke:
+    if: github.event_name == 'pull_request'
+    name: 🧪 Smoke Tests
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
@@ -16,7 +26,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t playwright-from-scratch .
 
-      - name: Run Playwright Tests in Docker
+      - name: Run Smoke Tests in Docker
         env:
           BASE_URL: "https://www.saucedemo.com/"
           USERNAME: ${{ secrets.USERNAME }}
@@ -26,7 +36,8 @@ jobs:
             -e BASE_URL=${BASE_URL} \
             -e USERNAME=${USERNAME} \
             -e PASSWORD=${PASSWORD} \
-            playwright-from-scratch
+            playwright-from-scratch \
+            npx playwright test --grep "@smoke"
 
       - name: Install Allure Commandline
         run: npm install -g allure-commandline
@@ -37,6 +48,48 @@ jobs:
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
+          name: smoke-allure-report
+          path: ./allure-report
+          retention-days: 30
+
+  # -----------------------------
+  # REGRESSION TESTS (After Merge)
+  # -----------------------------
+  regression:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    name: 🔁 Regression Tests (Post-Merge)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t playwright-from-scratch .
+
+      - name: Run Regression Tests in Docker
+        env:
+          BASE_URL: "https://www.saucedemo.com/"
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: |
+          docker run --rm -v $(pwd)/allure-results:/app/allure-results \
+            -e BASE_URL=${BASE_URL} \
+            -e USERNAME=${USERNAME} \
+            -e PASSWORD=${PASSWORD} \
+            playwright-from-scratch \
+            npx playwright test --grep "@regression"
+
+      - name: Install Allure Commandline
+        run: npm install -g allure-commandline
+
+      - name: Generate Allure Report
+        run: npx allure-commandline generate ./allure-results --clean -o ./allure-report
+
+      - name: Upload Allure Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-allure-report
           path: ./allure-report
           retention-days: 30
