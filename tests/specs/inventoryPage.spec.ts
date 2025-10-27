@@ -26,7 +26,4 @@ test('Add products to cart and verify item count', async({page, loginPage, inven
     await inventoryPage.clickcartLink();
 })
 
-
-
-
 })
