@@ -3,7 +3,6 @@ import  data from '../../test-data/data.json';
 // import {config} from 'dotenv';
 // config();
 
-
 test('Sauce Demo E2E - Login to Order Completion', async ({ loginPage, inventoryPage, cartPage, checkoutPage, overviewPage, orderPage }) => {
 
   await test.step('Login to SauceDemo', async () => {
