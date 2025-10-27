@@ -3,6 +3,7 @@ import {expect, type Locator, type Page} from '@playwright/test';
 export class CartPage {
     readonly page: Page;
     readonly cartTitle: Locator;
+    readonly cartItem: Locator;
     readonly removeButton: Locator;
     readonly continueShoppingButton: Locator;
     readonly checkoutButton: Locator;
@@ -10,13 +11,21 @@ export class CartPage {
     constructor(page: Page) {
         this.page = page;
         this.cartTitle = page.getByText('Your Cart');
+        this.cartItem = page.locator('.cart_item');
         this.removeButton = page.locator('#remove-sauce-labs-bike-light');
-        this.continueShoppingButton = page.locator('#continue-shopping');
+        this.continueShoppingButton = page.getByRole('button', {name : 'Continue Shopping'})
         this.checkoutButton = page.getByRole('button', {name: 'Checkout'})
 
     }
+
+    async navigation() {
+        await this.page.goto('/cart.html')
+    }
     async checkCartTitle() {
         await expect(this.cartTitle).toHaveText('Your Cart');
+    }
+    async itemsCount(){
+        await expect(this.cartItem).toHaveCount(2)
     }
 
     async checkRemoveButton() {

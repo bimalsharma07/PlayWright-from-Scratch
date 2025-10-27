@@ -29,13 +29,12 @@ export class InventoryPage {
     async checkSortContainer() {
        await this.sortContainer.selectOption('lohi');
     }
-  
-     async addProductToCart(productName: string) {
-    const productItem = this.inventoryItems.filter({ hasText: productName });
+    async addProductToCart(productName: string) {
+     const productItem = this.inventoryItems.filter({ hasText: productName });
     await productItem.locator('button').click();
   }
 
- async getCartItemCount() {
+    async getCartItemCount() {
     const badgeVisible = await this.cartLink.isVisible();
     return badgeVisible ? parseInt(await this.cartBadge.textContent() || '0') : 0;
   }
