@@ -22,7 +22,7 @@ type MyFixtures = {
 };
 
 export const test = base.extend<MyFixtures>({
-  // Page Object Fixtures
+
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
@@ -55,16 +55,12 @@ export const test = base.extend<MyFixtures>({
     await use(loggedInPage);
   },
 
-//   checkoutReadyPage: async ({ cartReadyPage, cartPage }, use) => {
-//     await cartPage.clickCheckout();
-//     await use(cartReadyPage);
-//   },
-
-//   overviewReadyPage: async ({ checkoutReadyPage, checkoutPage }, use) => {
-//     await checkoutPage.fillCheckoutForm('John', 'Doe', '12345');
-//     await checkoutPage.continueToOverview();
-//     await use(checkoutReadyPage);
-//   },
+  checkoutReadyPage: async ({ loginPage, cartReadyPage, inventoryPage,checkoutPage }, use) => {
+    await loginPage.goto();
+    await loginPage.validlogin('standard_user', 'secret_sauce');
+    await checkoutPage.goto();
+    await use(cartReadyPage);
+  },
 });
 
 export { expect } from '@playwright/test';
