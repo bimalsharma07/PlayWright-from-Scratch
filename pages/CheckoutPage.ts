@@ -20,6 +20,11 @@ export class CheckoutPage {
         this.cancelButton = page.getByRole('button', {name : 'cancel'})
     }
 
+
+    async goto() {
+        await this.page.goto('/checkout-step-one.html');
+    }
+
     async verifyCheckoutTitle() {
         await expect(this.checkoutTitle).toHaveText('Checkout: Your Information');
     }

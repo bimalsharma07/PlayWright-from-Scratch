@@ -1,5 +1,5 @@
 import { test, expect } from '../../fixtures/base-page';
-import { LoginPage } from '../../pages/LoginPage';
+//import { LoginPage } from '../../pages/LoginPage';
 import data from '../../test-data/data.json';
 
 test.describe('@regression Inventory Page actions', ()=> {
