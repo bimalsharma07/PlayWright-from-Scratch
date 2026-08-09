@@ -1,46 +1,24 @@
 import { expect, test } from '../../fixtures/base-page';
-import { LoginPage } from '../../pages/LoginPage';
-import data from '../../test-data/data.json';
+import { INVALID_LOGIN_SCENARIOS, VALID_LOGIN_SCENARIOS } from '../../test-data/login-data';
 
 test.describe('@regression Login Tests', () => {
-    test('Login with valid user', async ({page, loginPage}) => {
-        await page.goto('/');
-        await loginPage.validlogin(data.validuser.username, data.validuser.password);
-        await loginPage.loginSucess();
+  test.describe.configure({ mode: 'parallel' });
+
+  test.beforeEach(async ({ loginPage }) => {
+    await loginPage.goto();
+  });
+
+  for (const { scenario, credentials } of VALID_LOGIN_SCENARIOS) {
+    test(`Valid Login: ${scenario}`, async ({ page, loginPage }) => {
+      await loginPage.login(credentials.username, credentials.password);
+      await expect(page).toHaveURL('/inventory.html');
     });
-    test('Login with locked out user', async ({page, loginPage}) => {
-        await page.goto('/');
-        await loginPage.LockedUser(data.lockeduser.username, data.lockeduser.password);
-        await expect(loginPage.LockedMessage).toBeVisible();
+  }
+
+  for (const { scenario, expectedError, credentials } of INVALID_LOGIN_SCENARIOS) {
+    test(`Invalid Login: ${scenario}`, async ({ loginPage }) => {
+      await loginPage.login(credentials.username, credentials.password);
+      await expect(loginPage.errorMessageContainer).toContainText(expectedError);
     });
-    test('Login with problem user', async ({page, loginPage}) => {
-        await page.goto('/');
-        await loginPage.validlogin(data.problemuser.username, data.problemuser.password);
-        await loginPage.loginSucess();
-    });
-    test('Login with performance glitch user', async ({page, loginPage}) => {
-        await page.goto('/');
-        await loginPage.validlogin(data.performanceglitchuser.username, data.performanceglitchuser.password);
-        await loginPage.loginSucess();
-    });
-    test('Login with error user', async ({page, loginPage}) => {
-        await page.goto('/');
-        await loginPage.validlogin(data.erroruser.username, data.erroruser.password);
-        await loginPage.loginSucess();
-    });
-    test('Login with visual user', async ({page, loginPage}) => {
-        await page.goto('/');
-        await loginPage.validlogin(data.visualuser.username, data.visualuser.password);
-        await loginPage.loginSucess();
-    });
-    test('Login with invalidvalid user', async ({page, loginPage}) => {
-        await page.goto('/');
-        await loginPage.invalidLogin(data.invalidLogin.username, data.invalidLogin.password);
-        await expect(loginPage.errorMessage).toBeVisible();
-    });
-    test('Login with empty user', async ({page, loginPage}) => {
-        await page.goto('/');
-        await loginPage.EmptyUser(data.emptyLogin.username, data.emptyLogin.username);
-        await expect(loginPage.EmptyMessage).toBeVisible();
-    });
+  }
 });
