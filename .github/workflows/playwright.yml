@@ -23,21 +23,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t playwright-from-scratch .
+      - name: Install Node dependencies
+        run: npm install
 
-      - name: Run Smoke Tests in Docker
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Smoke Tests
         env:
           BASE_URL: "https://www.saucedemo.com/"
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-        run: |
-          docker run --rm -v $(pwd)/allure-results:/app/allure-results \
-            -e BASE_URL=${BASE_URL} \
-            -e USERNAME=${USERNAME} \
-            -e PASSWORD=${PASSWORD} \
-            playwright-from-scratch \
-            npx playwright test --grep "@smoke"
+        run: npx playwright test --grep "@smoke"
 
       - name: Install Allure Commandline
         run: npm install -g allure-commandline
@@ -65,21 +62,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t playwright-from-scratch .
+      - name: Install Node dependencies
+        run: npm install
 
-      - name: Run Regression Tests in Docker
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Regression Tests
         env:
           BASE_URL: "https://www.saucedemo.com/"
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-        run: |
-          docker run --rm -v $(pwd)/allure-results:/app/allure-results \
-            -e BASE_URL=${BASE_URL} \
-            -e USERNAME=${USERNAME} \
-            -e PASSWORD=${PASSWORD} \
-            playwright-from-scratch \
-            npx playwright test --grep "@regression"
+        run: npx playwright test --grep "@regression"
 
       - name: Install Allure Commandline
         run: npm install -g allure-commandline
